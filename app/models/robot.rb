@@ -17,7 +17,6 @@ class Robot
   end
 
   def self.all
-    self.database
     robots = database.execute("SELECT * FROM robots")
     robots.map do |robot|
       Robot.new(robot)
@@ -25,7 +24,6 @@ class Robot
   end
 
   def self.find(id)
-    self.database
     robot = database.execute("SELECT * FROM robots WHERE id = ?;", id).first
     Robot.new(robot)
   end
